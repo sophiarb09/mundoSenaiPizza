@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #ff8534, #ff2c2c);
+    min-height: 100vh;
+    color: white;
+    padding: 1rem;
+}
+
+.pagina {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    margin: 1rem 0 2rem;
+    font-size: 1.8rem;
+}
+
+/* Navegação — IGUAL em todas as telas */
+.nav-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.nav-bar button {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.nav-bar button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-bar button.nav-ativo {
+    background: #ffe600ad;
+    font-weight: bold;
+}
+
+.btn {
+    background: white;
+    color: #ff2c2c;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: scale(1.02);
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 0.9rem;
+    margin: 0.5rem 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+}

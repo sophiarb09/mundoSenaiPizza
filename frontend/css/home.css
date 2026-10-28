@@ -1,3 +1,152 @@
-body {
-    background-image: none;
+/* Cabeçalho */
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.cabecalho h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.btn-sair {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.btn-sair:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Banner de promoção */
+.promocao-cartaz {
+    background: white;
+    border-radius: 12px;
+    height: 120px;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ff2c2c;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* Seção de produtos */
+.produtos {
+    margin: 2rem 0;
+}
+
+.produtos h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+.grid-produtos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.card-produto {
+    background: white;
+    color: #ff2c2c;
+    border-radius: 12px;
+    padding: 1.2rem;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.card-produto:hover {
+    transform: translateY(-5px);
+}
+
+.card-produto h3 {
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+}
+
+.card-produto img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.btn-ver {
+    background: #ff2c2c;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-ver:hover {
+    background: #e02424;
+}
+
+/* Chamada para ação */
+.chamada {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+}
+
+.chamada h2 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.btn-principal {
+    background: #ffe600;
+    color: #b91c1c;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-principal:hover {
+    transform: scale(1.05);
+}
+
+/* Rodapé */
+.rodape {
+    text-align: center;
+    margin-top: 2rem;
+    opacity: 0.8;
+}
+
+.rodape hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 1rem;
+}
+
+.rodape p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+.rodape a {
+    color: white;
+    text-decoration: none;
 }

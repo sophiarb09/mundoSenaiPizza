@@ -4,26 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Início — Mamma Mia</title>
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
-    <div class="tela-home">
-        <header>
+    <div class="pagina">
+        <header class="cabecalho">
             <h1>Bem-vindo, <span id="nomeUsuario"></span>!</h1>
             <button id="botaoSair" class="btn-sair" onclick="sair()">Sair</button>
         </header>
+
         
-        <main class="nav-bar">
-            <button onclick="navEnderecos()"> Endereços </button>
-            <button onclick="navMeusPedidos()"> Meus Pedidos </button>
-            <button class="nav-home"> Home </button>
-            <button onclick="navCardapio()"> Cardápio </button>
-            <button onclick="navMontarPedido()"> Montar Pedido </button>
-        </main>
+        <div class="promocao-cartaz">
+        
+        </div>
+
+        <nav class="nav-bar">
+            <button onclick="navEnderecos()">Endereços</button>
+            <button onclick="navMeusPedidos()">Meus Pedidos</button>
+            <button class="nav-ativo">Home</button>
+            <button onclick="navCardapio()">Cardápio</button>
+            <button onclick="navMontarPedido()">Montar Pedido</button>
+        </nav>
+
+        
+        <section class="produtos">
+            <h2>CONHEÇA NOSSOS PRODUTOS</h2>
+            <div class="grid-produtos">
+                <div class="card-produto">
+                    <h3>Pizzas</h3>
+                    <img src="../img/pizzaHome.jpg" alt="Pizzas">
+                    <button class="btn-ver" onclick="navCardapio()">Ver mais</button>
+                </div>
+
+                <div class="card-produto">
+                    <h3>Combos</h3>
+                    <img src="../img/comboPizza.jpg" alt="Combos">
+                    <button class="btn-ver" onclick="navCardapio()">Ver mais</button>
+                </div>
+
+                <div class="card-produto">
+                    <h3>Entradas</h3>
+                    <img src="../img/bebida.jpg" alt="Bebidas">
+                    <button class="btn-ver" onclick="navCardapio()">Ver mais</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="chamada">
+            <h2>APROVEITE E PEÇA JÁ</h2>
+            <div class="botoes-acao">
+                <button class="btn-principal" onclick="navMontarPedido()">Pedir pelo Site</button>
+            </div>
+        </section>
+
+        <footer class="rodape">
+            <hr>
+            <p>@mammamiapizzaria</p>
+            <p>(99) 9 9999-9999</p>
+        </footer>
     </div>
 
-    <script src="../js/home.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/home.js"></script>
 </body>
 </html>

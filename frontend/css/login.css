@@ -1,0 +1,117 @@
+
+.tela-login {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.fundo-imagem {
+    position: absolute;
+    inset: 0;
+    background: url('../img/fundoLogin.jpeg') no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed; 
+    filter: brightness(0.6);
+    z-index: 1;
+}
+
+.caixa-login {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: left;
+}
+
+.formulario label {
+    color: #333;
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.formulario input {
+    padding: 0.9rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+.formulario input:focus {
+    outline: none;
+    border-color: #ff8534;
+}
+
+.botoes-form {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.btn-limpar {
+    flex: 1;
+    background: #eee;
+    color: #333;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-limpar:hover {
+    background: #ddd;
+}
+
+.btn-entrar {
+    flex: 1;
+    background: linear-gradient(to right, #ff8534, #ff2c2c);
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-entrar:hover {
+    transform: scale(1.02);
+}
+
+.link-senha {
+    margin-top: 1.2rem;
+    color: #ff2c2c;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-align: center;
+    display: inline-block;
+}
+
+.link-senha:hover {
+    text-decoration: underline;
+}
