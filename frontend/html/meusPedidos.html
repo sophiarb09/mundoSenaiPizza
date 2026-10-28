@@ -3,19 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Pedidos</title>
+    <title>Meus Pedidos — Mamma Mia</title>
+    <link rel="stylesheet" href="../css/meusPedidos.css">
 </head>
 <body>
-    <div>
-        <h1>Meus Pedidos</h1>
+    <div class="pagina">
+        <h1> Meus Pedidos</h1>
         
-        <main class="nav-bar">
-            <button onclick="navEnderecos()"> Endereços </button>
-            <button class="nav-meusPedidos"> Meus Pedidos </button>
-            <button onclick="navHome()"> Home </button>
-            <button onclick="navCardapio()"> Cardápio </button>
-            <button onclick="navMontarPedido()"> Montar Pedido </button>
-        </main>
+        <nav class="nav-bar">
+            <button onclick="navEnderecos()">Endereços</button>
+            <button class="nav-ativo">Meus Pedidos</button>
+            <button onclick="navHome()">Home</button>
+            <button onclick="navCardapio()">Cardápio</button>
+            <button onclick="navMontarPedido()">Montar Pedido</button>
+        </nav>
+
+        <div class="lista-pedidos" id="listaPedidos">
+            <p class="vazio">Você ainda não fez nenhum pedido.</p>
+        </div>
     </div>
 
     <script src="../js/script.js"></script>
