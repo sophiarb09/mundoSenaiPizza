@@ -1,302 +1,93 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const inputBusca = document.querySelector('.busca input');
+    const categorias = document.querySelectorAll('.categoria');
+    const cardsPizza = document.querySelectorAll('.pizza-card');
+    const botoesFavoritar = document.querySelectorAll('.btn-favorito');
+    const botoesComprar = document.querySelectorAll('.btn-comprar');
 
-/* LISTA DE SABORES */
+    let favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
 
-const sabores = [
-    {
-        numero: "02",
-        nome: "Quatro Queijos",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, requeijão cremoso, provolone e parmesão."
-    },
-    {
-        numero: "03",
-        nome: "Tomate Seco com Rúcula",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, tomate seco e rúcula."
-    },
-    {
-        numero: "04",
-        nome: "Calabresa",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, calabresa e cebola em rodelas."
-    },
-    {
-        numero: "06",
-        nome: "Portuguesa",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, presunto picado, cebola em rodelas e ovos."
-    },
-    {
-        numero: "07",
-        nome: "Paulista",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, presunto picado, palmito e ervilhas."
-    },
-    {
-        numero: "08",
-        nome: "Bacon",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas e bacon."
-    },
-    {
-        numero: "09",
-        nome: "Fiorentina",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, presunto picado, champignon e ovos."
-    },
-    {
-        numero: "10",
-        nome: "Lombinho",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, lombinho defumado, tomate e parmesão."
-    },
-    {
-        numero: "11",
-        nome: "Frango Catupiry",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, frango e requeijão cremoso."
-    },
-    {
-        numero: "12",
-        nome: "Marguerita",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, parmesão, manjericão e tomates."
-    },
-    {
-        numero: "14",
-        nome: "Romanesca",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, presunto picado, ervilhas, requeijão cremoso e ovos."
-    },
-    {
-        numero: "15",
-        nome: "Palmito",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas e palmito."
-    },
-    {
-        numero: "16",
-        nome: "Aglio",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, alho frito e parmesão."
-    },
-    {
-        numero: "17",
-        nome: "Vegetariana",
-        ingredientes: "Mussarela, orégano, molho de tomate, azeitonas, brócolis, palmito, tomate, champignon e parmesão."
-    }
-];
+    botoesFavoritar.forEach(botao => {
+        const card = botao.closest('.pizza-card');
+        const nome = card.querySelector('h3').textContent;
 
-/* VARIÁVEIS */
-
-const precoPizza = 73.90;
-
-let quantidade = 1;
-let selecionados = [];
-let carrinho = [];
-
-/* ELEMENTOS HTML */
-
-const listaSabores = document.getElementById("lista-sabores");
-const quantidadeTexto = document.getElementById("quantidade");
-const totalTexto = document.getElementById("total");
-const resumoSabores = document.getElementById("sabores-selecionados");
-const itensCarrinho = document.getElementById("itens-carrinho");
-const totalCarrinho = document.getElementById("total-carrinho");
-
-/* FORMATAR MOEDA */
-
-function formatarMoeda(valor) {
-    return valor.toLocaleString("pt-BR", {
-        style: "currency",
-        currency: "BRL"
-    });
-}
-
-/* MOSTRAR SABORES */
-
-function mostrarSabores() {
-    listaSabores.innerHTML = "";
-
-    sabores.forEach((sabor, indice) => {
-        const ativo = selecionados.includes(indice);
-
-        const div = document.createElement("div");
-        div.className = ativo ? "sabor ativo" : "sabor";
-
-        div.innerHTML = `
-            <div class="icone-pizza">🍕</div>
-
-            <div class="info-sabor">
-                <h4>${sabor.numero} ${sabor.nome}</h4>
-                <p>${sabor.ingredientes}</p>
-            </div>
-
-            <button
-                class="btn-sabor"
-                aria-label="${ativo ? "Remover" : "Adicionar"} ${sabor.nome}"
-                aria-pressed="${ativo}"
-            >
-                ${ativo ? "−" : "+"}
-            </button>
-        `;
-
-        div.querySelector("button").addEventListener("click", () => {
-            selecionarSabor(indice);
-        });
-
-        listaSabores.appendChild(div);
-    });
-}
-
-/* SELECIONAR OU REMOVER SABOR */
-
-function selecionarSabor(indice) {
-    if (selecionados.includes(indice)) {
-        selecionados = selecionados.filter(
-            item => item !== indice
-        );
-    } else {
-        selecionados.push(indice);
-    }
-
-    mostrarSabores();
-    atualizarTotal();
-}
-
-/* ATUALIZAR PREÇO */
-
-function atualizarTotal() {
-    quantidadeTexto.textContent = quantidade;
-
-    if (selecionados.length === 0) {
-        totalTexto.textContent = formatarMoeda(0);
-        resumoSabores.textContent = "Nenhum sabor selecionado";
-        return;
-    }
-
-    const total = precoPizza * quantidade;
-
-    totalTexto.textContent = formatarMoeda(total);
-
-    const nomes = selecionados.map(
-        indice => sabores[indice].nome
-    );
-
-    resumoSabores.textContent =
-        "Sabores selecionados: " + nomes.join(", ");
-}
-
-/* AUMENTAR QUANTIDADE */
-
-document.getElementById("aumentar").addEventListener("click", () => {
-    quantidade++;
-    atualizarTotal();
-});
-
-/* DIMINUIR QUANTIDADE */
-
-document.getElementById("diminuir").addEventListener("click", () => {
-    if (quantidade > 1) {
-        quantidade--;
-        atualizarTotal();
-    }
-});
-
-/* ADICIONAR AO CARRINHO */
-
-document.getElementById("adicionar-pedido")
-    .addEventListener("click", () => {
-
-        if (selecionados.length === 0) {
-            alert("Selecione pelo menos um sabor!");
-            return;
+        if (favoritos.includes(nome)) {
+            botao.classList.add('favoritado');
+            botao.innerHTML = '❤️';
+        } else {
+            botao.classList.remove('favoritado');
+            botao.innerHTML = '🤍';
         }
-
-        const nomes = selecionados.map(
-            indice => sabores[indice].nome
-        );
-
-        const pedido = {
-            quantidade: quantidade,
-            sabores: nomes,
-            preco: precoPizza * quantidade
-        };
-
-        carrinho.push(pedido);
-
-        mostrarCarrinho();
-
-        alert("Pizza adicionada ao pedido!");
-
-        selecionados = [];
-        quantidade = 1;
-
-        mostrarSabores();
-        atualizarTotal();
     });
 
-/* MOSTRAR CARRINHO */
-
-function mostrarCarrinho() {
-    itensCarrinho.innerHTML = "";
-
-    if (carrinho.length === 0) {
-        itensCarrinho.innerHTML =
-            "<p>Seu carrinho está vazio.</p>";
+    if (inputBusca) {
+        inputBusca.addEventListener('input', function() {
+            const termo = this.value.toLowerCase();
+            cardsPizza.forEach(card => {
+                const nome = card.querySelector('h3').textContent.toLowerCase();
+                const descricao = card.querySelector('.descricao').textContent.toLowerCase();
+                card.style.display = (nome.includes(termo) || descricao.includes(termo)) ? 'block' : 'none';
+            });
+        });
     }
 
-    let total = 0;
-
-    carrinho.forEach((pedido, indice) => {
-        total += pedido.preco;
-
-        const div = document.createElement("div");
-        div.className = "item-carrinho";
-
-        const info = document.createElement("div");
-
-        const titulo = document.createElement("strong");
-        titulo.textContent =
-            `${pedido.quantidade}x Pizza Gigante + Pureza 1,5L`;
-
-        const descricao = document.createElement("p");
-        descricao.textContent =
-            "Sabores: " + pedido.sabores.join(", ");
-
-        const preco = document.createElement("p");
-        preco.textContent = formatarMoeda(pedido.preco);
-
-        info.append(titulo, descricao, preco);
-
-        const botao = document.createElement("button");
-        botao.className = "btn-remover";
-        botao.textContent = "Remover";
-
-        botao.addEventListener("click", () => {
-            removerPedido(indice);
+    categorias.forEach(cat => {
+        cat.addEventListener('click', function() {
+            categorias.forEach(c => c.classList.remove('ativa'));
+            this.classList.add('ativa');
+            const catSelecionada = this.textContent.toLowerCase();
+            cardsPizza.forEach(card => {
+                const catCard = card.getAttribute('data-categoria');
+                card.style.display = (catSelecionada === 'todos' || catCard === catSelecionada) ? 'block' : 'none';
+            });
         });
-
-        div.append(info, botao);
-        itensCarrinho.appendChild(div);
     });
 
-    totalCarrinho.textContent = formatarMoeda(total);
-}
+    botoesFavoritar.forEach(botao => {
+        botao.addEventListener('click', function() {
+            const card = this.closest('.pizza-card');
+            const nomePizza = card.querySelector('h3').textContent;
 
-/* REMOVER PEDIDO */
+            favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
 
-function removerPedido(indice) {
-    carrinho.splice(indice, 1);
-    mostrarCarrinho();
-}
+            if (this.classList.contains('favoritado')) {
 
-/* FINALIZAR PEDIDO */
+                favoritos = favoritos.filter(n => n !== nomePizza);
+                this.classList.remove('favoritado');
+                this.innerHTML = '🤍';
+            } else {
 
-document.getElementById("finalizar")
-    .addEventListener("click", () => {
+                favoritos.push(nomePizza);
+                this.classList.add('favoritado');
+                this.innerHTML = '❤️';
+            }
 
-        if (carrinho.length === 0) {
-            alert("Seu carrinho está vazio!");
-            return;
-        }
-
-        alert(
-            "Pedido registrado na demonstração! " +
-            "A integração com o sistema de pedidos " +
-            "ainda precisa ser implementada."
-        );
+            localStorage.setItem('favoritos', JSON.stringify(favoritos));
+        });
     });
 
-/* INICIAR SISTEMA */
-
-mostrarSabores();
-atualizarTotal();
-mostrarCarrinho();
+    botoesComprar.forEach(botao => {
+        botao.addEventListener('click', function() {
+            const card = this.closest('.pizza-card');
+            const item = {
+                nome: card.querySelector('h3').textContent,
+                preco: parseFloat(card.querySelector('.preco').textContent.replace('R$ ', '').replace(',', '.')),
+                descricao: card.querySelector('.descricao').textContent,
+                quantidade: 1
+            };
+            let carrinho = JSON.parse(localStorage.getItem('carrinho') || '[]');
+            const indice = carrinho.findIndex(i => i.nome === item.nome);
+            if (indice > -1) {
+                carrinho[indice].quantidade++;
+            } else {
+                carrinho.push(item);
+            }
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+            
+            this.textContent = ' Adicionado!';
+            setTimeout(() => {
+                this.textContent = 'Adicionar ao Pedido';
+            }, 1500);
+        });
+    });
+});

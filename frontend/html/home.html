@@ -3,69 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início — Mamma Mia</title>
-    <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/home.css">
+    <title>MammaMia Pizzaria</title>
 </head>
 <body>
-    <div class="pagina">
-        <header class="cabecalho">
-            <h1>Bem-vindo, <span id="nomeUsuario"></span>!</h1>
-            <button id="botaoSair" class="btn-sair" onclick="sair()">Sair</button>
-        </header>
+    <header>
+        <h1>🍕 MammaMia Pizzaria</h1>
+        <p>O sabor da tradição direto para a sua mesa!</p>
+    </header>
 
-        
-        <div class="promocao-cartaz">
-        
-        </div>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="enderecos.html">Endereços</a>
+        <a href="meusPedidos.html">Meus Pedidos</a>
+        <a href="cardapio.html">Cardápio</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="montarPedido.html">Montar Pedido</a>
+    </nav>
 
-        <nav class="nav-bar">
-            <button onclick="navEnderecos()">Endereços</button>
-            <button onclick="navMeusPedidos()">Meus Pedidos</button>
-            <button class="nav-ativo">Home</button>
-            <button onclick="navCardapio()">Cardápio</button>
-            <button onclick="navMontarPedido()">Montar Pedido</button>
-        </nav>
+    <main>
+        <section class="hero">
+            <h2>Bem-vindo à MammaMia!</h2>
+            <p>As melhores pizzas da região, feitas com ingredientes selecionados e muito carinho. Peça já a sua!</p>
+        </section>
 
-        
-        <section class="produtos">
-            <h2>CONHEÇA NOSSOS PRODUTOS</h2>
-            <div class="grid-produtos">
-                <div class="card-produto">
-                    <h3>Pizzas</h3>
-                    <img src="../img/pizzaHome.jpg" alt="Pizzas">
-                    <button class="btn-ver" onclick="navCardapio()">Ver mais</button>
+        <section class="destaques">
+            <h3>Nossos Destaques</h3>
+            <div class="cards">
+                <div class="card">
+                    <h4>🍕 Marguerita</h4>
+                    <p>Molho de tomate, mussarela, manjericão e azeite de oliva.</p>
                 </div>
-
-                <div class="card-produto">
-                    <h3>Combos</h3>
-                    <img src="../img/comboPizza.jpg" alt="Combos">
-                    <button class="btn-ver" onclick="navCardapio()">Ver mais</button>
+                <div class="card">
+                    <h4>🍕 Calabresa</h4>
+                    <p>Calabresa fatiada, cebola, azeitonas e mussarela.</p>
                 </div>
-
-                <div class="card-produto">
-                    <h3>Entradas</h3>
-                    <img src="../img/bebida.jpg" alt="Bebidas">
-                    <button class="btn-ver" onclick="navCardapio()">Ver mais</button>
+                <div class="card">
+                    <h4>🍕 Chocolate com Morango</h4>
+                    <p>Chocolate meio amargo, morangos frescos e granulado.</p>
                 </div>
             </div>
         </section>
+    </main>
 
-        <section class="chamada">
-            <h2>APROVEITE E PEÇA JÁ</h2>
-            <div class="botoes-acao">
-                <button class="btn-principal" onclick="navMontarPedido()">Pedir pelo Site</button>
-            </div>
-        </section>
-
-        <footer class="rodape">
-            <hr>
-            <p>@mammamiapizzaria</p>
-            <p>(99) 9 9999-9999</p>
-        </footer>
-    </div>
-
-    <script src="../js/script.js"></script>
+    <footer>
+        <p>&copy; 2026 MammaMia Pizzaria. Todos os direitos reservados.</p>
+    </footer>
+    
     <script src="../js/home.js"></script>
 </body>
 </html>

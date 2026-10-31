@@ -1,0 +1,152 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #fff9f0;
+    color: #333;
+}
+
+header {
+    background-color: #b71c1c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+nav {
+    background-color: #e64a19;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #ffccbc;
+    color: #b71c1c;
+}
+
+main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #b71c1c;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.grid-favoritos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.favorito-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 2px solid #ffccbc;
+}
+
+.favorito-card h3 {
+    color: #b71c1c;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.coracao {
+    color: #e64a19;
+    font-size: 1.3rem;
+}
+
+.preco {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2e7d32;
+    margin: 10px 0;
+}
+
+.descricao {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.botoes {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-comprar {
+    flex: 1;
+    padding: 10px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-comprar:hover {
+    background-color: #1b5e20;
+}
+
+.btn-remover {
+    padding: 10px 15px;
+    background: none;
+    border: 2px solid #e64a19;
+    color: #e64a19;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btn-remover:hover {
+    background-color: #ffebee;
+}
+
+.vazio {
+    text-align: center;
+    padding: 60px 20px;
+    color: #777;
+    font-style: italic;
+}
+
+.vazio a {
+    color: #e64a19;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+footer {
+    background-color: #b71c1c;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 50px;
+}

@@ -2,118 +2,164 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
-    background: linear-gradient(to bottom, #ff8534, #ff2c2c);
-    min-height: 100vh;
-    color: white;
-    padding: 1rem;
+    background-color: #fff9f0;
+    color: #333;
 }
 
-.pagina {
-    max-width: 700px;
-    margin: 0 auto;
+header {
+    background-color: #b71c1c;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
 h1 {
+    font-size: 2rem;
+}
+
+nav {
+    background-color: #e64a19;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #ffccbc;
+    color: #b71c1c;
+}
+
+main {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #b71c1c;
+    margin-bottom: 25px;
     text-align: center;
-    margin: 1rem 0 2rem;
     font-size: 1.8rem;
 }
 
-.nav-bar {
+.secao {
+    margin-bottom: 40px;
+}
+
+.secao h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid;
+}
+
+.em-preparo h3 {
+    color: #f57c00;
+    border-color: #f57c00;
+}
+
+.finalizados h3 {
+    color: #666;
+    border-color: #ccc;
+}
+
+.pedido-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 15px;
+}
+
+.pedido-header {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    justify-content: center;
-    margin-bottom: 2rem;
+    gap: 8px;
 }
 
-.nav-bar button {
-    background: rgba(255,255,255,0.2);
-    color: white;
-    border: none;
-    padding: 0.7rem 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.nav-bar button:hover {
-    background: rgba(255,255,255,0.3);
-}
-
-.nav-bar button.nav-ativo {
-    background: #ffe600ad;
+.pedido-numero {
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
-/* Lista de Pedidos */
-.lista-pedidos {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+.status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.status.preparo {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.status.finalizado {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.pedido-data {
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.pedido-itens {
+    margin: 10px 0;
+    padding-left: 15px;
+}
+
+.pedido-itens li {
+    margin: 5px 0;
+    list-style: none;
+    position: relative;
+}
+
+.pedido-itens li::before {
+    content: "•";
+    color: #e64a19;
+    font-weight: bold;
+    position: absolute;
+    left: -15px;
+}
+
+.pedido-total {
+    margin-top: 12px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #2e7d32;
 }
 
 .vazio {
     text-align: center;
-    padding: 3rem;
-    opacity: 0.7;
+    padding: 40px;
+    color: #777;
+    font-style: italic;
 }
 
-/* Card de cada pedido */
-.card-pedido {
-    background: white;
-    color: #1f2937;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-.pedido-cabecalho {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.8rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #eee;
-}
-
-.numero {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #b91c1c;
-}
-
-.data {
-    font-size: 0.9rem;
-    color: #6b7280;
-}
-
-.status {
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: bold;
-    margin: 0.5rem 0;
-}
-
-.status.recebido { background: #fef3c7; color: #92400e; }
-.status.preparo  { background: #dbeafe; color: #1e40af; }
-.status.entrega  { background: #e0e7ff; color: #3730a3; }
-.status.concluido { background: #d1fae5; color: #065f46; }
-
-.pedido-detalhes p {
-    margin: 0.3rem 0;
-    font-size: 0.95rem;
-}
-
-.valor {
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #b91c1c;
-    margin-top: 0.5rem;
+footer {
+    background-color: #b71c1c;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 50px;
 }

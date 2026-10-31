@@ -1,0 +1,256 @@
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff9f0;
+    margin: 0;
+    color: #333;
+}
+
+main {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #b71c1c;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #ffccbc;
+    padding-bottom: 10px;
+}
+
+.carrinho {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+}
+
+.carrinho .vazio {
+    text-align: center;
+    color: #777;
+    padding: 30px 10px;
+    font-style: italic;
+}
+
+.carrinho .vazio a {
+    color: #e64a19;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #ffe0b2;
+    flex-wrap: wrap;
+}
+
+.item > div:first-child {
+    flex: 2;
+    min-width: 180px;
+}
+
+.item-nome {
+    font-weight: bold;
+    color: #b71c1c;
+    font-size: 1rem;
+    margin-bottom: 4px;
+}
+
+.item-detalhe {
+    font-size: 0.85rem;
+    color: #666;
+    line-height: 1.3;
+}
+
+.item-qtd {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qtd-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: #ffebee;
+    color: #b71c1c;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.qtd-btn:hover {
+    background: #ffccbc;
+}
+
+.item-qtd span {
+    min-width: 24px;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+.item-preco {
+    min-width: 100px;
+    text-align: right;
+    font-weight: bold;
+    color: #2e7d32;
+}
+
+.remover {
+    background: transparent;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.remover:hover {
+    opacity: 1;
+}
+
+.total {
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 2px solid #ffccbc;
+}
+
+.bloco-endereco {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.bloco-endereco h3 {
+    color: #b71c1c;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-endereco {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.grupo-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-form label {
+    font-weight: bold;
+    color: #b71c1c;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.form-endereco input,
+.form-endereco select {
+    padding: 12px 15px;
+    border: 2px solid #ffccbc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-endereco input:focus,
+.form-endereco select:focus {
+    outline: none;
+    border-color: #e64a19;
+    box-shadow: 0 0 0 3px rgba(230, 74, 25, 0.15);
+}
+
+.linha-dupla {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.botoes-form {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.botoes-form button,
+.botoes-form a {
+    flex: 1;
+    min-width: 140px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.botoes-form button:active,
+.botoes-form a:active {
+    transform: scale(0.98);
+}
+
+.btn-voltar {
+    background-color: #ffebee;
+    color: #b71c1c;
+}
+
+.btn-voltar:hover {
+    background-color: #ffccbc;
+}
+
+.btn-limpar {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.btn-limpar:hover {
+    background-color: #ffe0b2;
+}
+
+.btn-finalizar {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.btn-finalizar:hover {
+    background-color: #1b5e20;
+}
+
+@media (max-width: 600px) {
+    .linha-dupla {
+        grid-template-columns: 1fr;
+    }
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .item-preco {
+        text-align: left;
+    }
+    .botoes-form {
+        flex-direction: column;
+    }
+}

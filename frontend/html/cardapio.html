@@ -1,171 +1,116 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cardápio — Mamma Mia</title>
-    <link rel="stylesheet" href="cardapio.css">
-    <script src="cardapio.js" defer></script>
+    <link rel="stylesheet" href="../css/cardapio.css">
+    <title>Cardápio — MammaMia</title>
 </head>
 <body>
-
-    <header class="cabecalho">
-        <h1>🍕 Mamma Mia</h1>
-        <p>O sabor que conquista você!</p>
+    <header>
+        <h1>🍕 Cardápio MammaMia</h1>
     </header>
 
-    <nav class="menu">
-        <a href="#inicio">Início</a>
-        <a href="#produtos">Produtos</a>
-        <a href="#promocao">Promoção</a>
-        <a href="#carrinho">Meu Pedido</a>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="enderecos.html">Endereços</a>
+        <a href="meusPedidos.html">Meus Pedidos</a>
+        <a href="cardapio.html">Cardápio</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="montarPedido.html">Montar Pedido</a>
     </nav>
 
-    <!-- BANNER PROMOCIONAL -->
-    <section class="banner-promo" id="inicio">
-        <h2>FRETE GRÁTIS</h2>
-        <p>Em pedidos acima de R$ 30,00</p>
-
-        <div class="cupom">
-            USE O CUPOM
-            <strong>MAMMAMIA</strong>
+    <main>
+        <div class="busca">
+            <input type="search" placeholder="🔍 Pesquise pelo sabor da pizza...">
         </div>
 
-        <a href="#promocao" class="btn-pedido">
-            Montar Meu Pedido
-        </a>
-    </section>
+        <div class="categorias">
+            <div class="categoria ativa">Todos</div>
+            <div class="categoria">Salgado</div>
+            <div class="categoria">Doce</div>
+            <div class="categoria">Vegetariano</div>
+            <div class="categoria">Especiais</div>
+        </div>
 
-    <!-- CATEGORIAS -->
-    <section class="produtos" id="produtos">
-        <h2>CONHEÇA NOSSOS PRODUTOS</h2>
-
-        <div class="grid-produtos">
-            <div class="card-produto">
-                <div class="emoji">🍕</div>
-                <h3>Pizzas</h3>
-                <p>Sabores especiais para você.</p>
-                <a href="#promocao" class="btn-ver">Ver mais</a>
+        <div class="grid-pizzas">
+            
+            <div class="pizza-card" data-categoria="salgado">
+                <h3>Marguerita</h3>
+                <p class="preco">R$ 39,90</p>
+                <p class="descricao">Molho de tomate, mussarela de búfala, tomate fatiado, manjericão fresco e azeite de oliva extra virgem.</p>
+                <div class="botoes">
+                    <button class="btn-comprar">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">❤️</button>
+                </div>
             </div>
 
-            <div class="card-produto">
-                <div class="emoji">🍕🥤</div>
-                <h3>Combos</h3>
-                <p>Combinações deliciosas.</p>
-                <a href="#promocao" class="btn-ver">Ver mais</a>
+            <div class="pizza-card" data-categoria="salgado">
+                <h3>Calabresa</h3>
+                <p class="preco">R$ 42,00</p>
+                <p class="descricao">Linguiça calabresa fatiada, cebola roxa, azeitonas pretas, mussarela e orégano.</p>
+                <div class="botoes">
+                    <button class="btn-comprar">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">❤️</button>
+                </div>
             </div>
 
-            <div class="card-produto">
-                <div class="emoji">🍟</div>
-                <h3>Entradas</h3>
-                <p>Para começar com muito sabor.</p>
-                <button class="btn-ver" disabled>
-                    Em breve
-                </button>
+            <div class="pizza-card" data-categoria="salgado">
+                <h3>Quatro Queijos</h3>
+                <p class="preco">R$ 48,50</p>
+                <p class="descricao">Mussarela, provolone, gorgonzola e parmesão ralado com molho branco.</p>
+                <div class="botoes">
+                    <button class="btn-comprar">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">❤️</button>
+                </div>
             </div>
 
-            <div class="card-produto">
-                <div class="emoji">🍰</div>
-                <h3>Sobremesas</h3>
-                <p>Um doce para finalizar.</p>
-                <button class="btn-ver" disabled>
-                    Em breve
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROMOÇÃO DA IMAGEM -->
-    <section class="promocao" id="promocao">
-
-        <div class="titulo-promocao">
-            <div>
-                <h2>Pizza Gigante + Pureza 1,5L</h2>
-                <p>Somente Balcão</p>
+            <div class="pizza-card" data-categoria="doce">
+                <h3>Chocolate com Morango</h3>
+                <p class="preco">R$ 45,00</p>
+                <p class="descricao">Chocolate meio amargo derretido, morangos frescos fatiados e granulado belga.</p>
+                <div class="botoes">
+                    <button class="btn-comprar">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">❤️</button>
+                </div>
             </div>
 
-            <div class="quantidade">
-                <button id="diminuir" aria-label="Diminuir quantidade">−</button>
-                <span id="quantidade">1</span>
-                <button id="aumentar" aria-label="Aumentar quantidade">+</button>
+            <div class="pizza-card" data-categoria="doce">
+                <h3>Banana com Canela</h3>
+                <p class="preco">R$ 38,00</p>
+                <p class="descricao">Fatias de banana dourada, açúcar, canela em pó e leite condensado.</p>
+                <div class="botoes">
+                    <button class="btn-comprar">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">❤️</button>
+                </div>
+            </div>
+
+            <div class="pizza-card" data-categoria="vegetariano">
+                <h3>Vegetariana Completa</h3>
+                <p class="preco">R$ 46,00</p>
+                <p class="descricao">Molho de tomate, abobrinha, berinjela, pimentão colorido, cenoura ralada, milho e ervilha.</p>
+                <div class="botoes">
+                    <button class="btn-comprar">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">❤️</button>
+                </div>
+            </div>
+
+            <div class="pizza-card" data-categoria="especiais">
+                <h3>MammaMia Especial</h3>
+                <p class="preco">R$ 55,00</p>
+                <p class="descricao">Molho de tomate, mussarela, presunto, calabresa, frango desfiado, catupiry, ovos e azeitonas.</p>
+                <div class="botoes">
+                    <button class="btn-comprar">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">❤️</button>
+                </div>
             </div>
         </div>
-
-        <div class="descricao-promocao">
-            <p>
-                Produto válido somente para pedidos de
-                retirada no balcão!
-            </p>
-            <p>
-                Pizza Gigante Tradicional (12 fatias)
-                + Borda doce Grátis + Pureza 1,5L.
-            </p>
-        </div>
-
-        <div class="barra-sabores">
-            <h3>Pizza Gigante — Escolha mínima 1</h3>
-            <span>Obrigatório</span>
-            <strong>R$ 73,90</strong>
-        </div>
-
-        <div class="lista-sabores" id="lista-sabores">
-            <!-- Os sabores serão criados pelo JavaScript -->
-        </div>
-
-        <div class="resumo-selecao">
-            <p id="sabores-selecionados">
-                Nenhum sabor selecionado
-            </p>
-        </div>
-
-        <div class="rodape-promocao">
-            <strong id="total">R$ 0,00</strong>
-
-            <button id="adicionar-pedido" class="btn-adicionar">
-                Adicionar 🛍️
-            </button>
-        </div>
-    </section>
-
-    <!-- CARRINHO -->
-    <section class="carrinho" id="carrinho">
-        <h2>🛒 Meu Pedido</h2>
-
-        <div id="itens-carrinho">
-            <p>Seu carrinho está vazio.</p>
-        </div>
-
-        <div class="total-carrinho">
-            <strong>Total:</strong>
-            <strong id="total-carrinho">R$ 0,00</strong>
-        </div>
-
-        <button class="btn-finalizar" id="finalizar">
-            Finalizar Pedido
-        </button>
-    </section>
-
-    <!-- CHAMADA FINAL -->
-    <section class="chamada">
-        <h2>APROVEITE E PEÇA JÁ!</h2>
-        <p>Escolha sua pizza favorita e aproveite.</p>
-
-        <div class="botoes-acao">
-            <a href="#produtos" class="btn-secundario">
-                Ver Produtos
-            </a>
-            <a href="#promocao" class="btn-principal">
-                Pedir pelo Site
-            </a>
-        </div>
-    </section>
+    </main>
 
     <footer>
-        <p>© 2026 Mamma Mia — Todos os direitos reservados.</p>
+        <p>&copy; 2026 MammaMia Pizzaria. Todos os direitos reservados.</p>
     </footer>
 
-    <script src="cardapio.js"></script>
-    <script src="script.js"></script>
+    <script src="../js/cardapio.js"></script>
 </body>
 </html>

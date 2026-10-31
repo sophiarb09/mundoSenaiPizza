@@ -1,37 +1,61 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/enderecos.css">
-    <title>Endereços</title>
+    <link rel="stylesheet" href="../css/endereco.css">
+    <title>Endereços — MammaMia</title>
 </head>
 <body>
-    <div>
-        <h1>Endereços</h1>
-        <form>
-            <label>pesquisar</label></br>
-             <input type="search" name="perquisar" id="search">
-            <label>rua joselino da silva numero 101</label>
-            <label>bairro  avenida das torres numero 325</label>
-            <label> rua  verão azul numero 415</label>
-        </form>
-        <div>
-           
+    <header>
+        <h1>🍕 MammaMia Pizzaria</h1>
+    </header>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="enderecos.html">Endereços</a>
+        <a href="meusPedidos.html">Meus Pedidos</a>
+        <a href="cardapio.html">Cardápio</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="montarPedido.html">Montar Pedido</a>
+    </nav>
+
+    <main>
+        <h2>Nossas Lojas Próximas a Você</h2>
+
+        <div class="localizacao">
+            <p>Para encontrar a loja mais próxima, ative sua localização:</p>
+            <button class="btn-local" onclick="alert('Localização obtida! Exibindo lojas próximas.')">Usar minha localização</button>
         </div>
 
-        
+        <div class="filiais">
+            <div class="filial">
+                <h3>📍 MammaMia — Palhoça Centro</h3>
+                <p>Rua Domingos Pedro Hermes, 456 — Centro, Palhoça</p>
+                <p class="distancia">Aproximadamente 1,2 km de você</p>
+                <p>⏰ Funcionamento: 18h às 23h — Terça a Domingo</p>
+            </div>
 
-        <main class="nav-bar">
-            <button class="nav-endereco"> Endereços </button>
-            <button onclick="navMeusPedidos()"> Meus Pedidos </button>
-            <button onclick="navHome()"> Home </button>
-            <button onclick="navCardapio()"> Cardápio </button>
-            <button onclick="navMontarPedido()"> Montar Pedido </button>
-        </main>
-    </div>
+            <div class="filial">
+                <h3>📍 MammaMia — Bairro Pagani</h3>
+                <p>Avenida Raimundo Soares, 789 — Pagani, Palhoça</p>
+                <p class="distancia">Aproximadamente 2,8 km de você</p>
+                <p>⏰ Funcionamento: 18h às 23h — Terça a Domingo</p>
+            </div>
 
-    <script src="../js/script.js"></script>
+            <div class="filial">
+                <h3>📍 MammaMia — São José</h3>
+                <p>Rua Nossa Senhora dos Navegantes, 120 — Centro, São José</p>
+                <p class="distancia">Aproximadamente 8,5 km de você</p>
+                <p>⏰ Funcionamento: 18h às 00h — Quarta a Domingo</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MammaMia Pizzaria. Todos os direitos reservados.</p>
+    </footer>
+
     <script src="../js/enderecos.js"></script>
 </body>
 </html>

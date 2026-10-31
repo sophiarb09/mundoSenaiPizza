@@ -1,0 +1,112 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #fff9f0;
+    color: #333;
+}
+
+header {
+    background-color: #b71c1c;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+nav {
+    background-color: #e64a19;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+nav a:hover {
+    background-color: #ffccbc;
+    color: #b71c1c;
+}
+
+main {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #b71c1c;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.localizacao {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.btn-local {
+    background-color: #e64a19;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 15px 0;
+}
+
+.btn-local:hover {
+    background-color: #b71c1c;
+}
+
+.filiais {
+    display: grid;
+    gap: 20px;
+}
+
+.filial {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.filial h3 {
+    color: #b71c1c;
+    margin-bottom: 8px;
+}
+
+.distancia {
+    color: #e64a19;
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+footer {
+    background-color: #b71c1c;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 50px;
+}

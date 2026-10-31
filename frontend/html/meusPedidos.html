@@ -1,29 +1,93 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Pedidos — Mamma Mia</title>
     <link rel="stylesheet" href="../css/meusPedidos.css">
+    <title>Meus Pedidos — MammaMia</title>
 </head>
 <body>
-    <div class="pagina">
-        <h1> Meus Pedidos</h1>
-        
-        <nav class="nav-bar">
-            <button onclick="navEnderecos()">Endereços</button>
-            <button class="nav-ativo">Meus Pedidos</button>
-            <button onclick="navHome()">Home</button>
-            <button onclick="navCardapio()">Cardápio</button>
-            <button onclick="navMontarPedido()">Montar Pedido</button>
-        </nav>
+    <header>
+        <h1>🍕 MammaMia Pizzaria</h1>
+    </header>
 
-        <div class="lista-pedidos" id="listaPedidos">
-            <p class="vazio">Você ainda não fez nenhum pedido.</p>
-        </div>
-    </div>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="enderecos.html">Endereços</a>
+        <a href="meusPedidos.html">Meus Pedidos</a>
+        <a href="cardapio.html">Cardápio</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="montarPedido.html">Montar Pedido</a>
+    </nav>
 
-    <script src="../js/script.js"></script>
+    <main>
+        <h2>Meus Pedidos</h2>
+
+        <section class="secao em-preparo">
+            <h3>🔥 Em Preparo</h3>
+
+            <div class="pedido-card">
+                <div class="pedido-header">
+                    <span class="pedido-numero">Pedido #0042</span>
+                    <span class="status preparo">Em Preparo</span>
+                </div>
+                <p class="pedido-data">Data: 30/10/2026 — 19:45</p>
+                <ul class="pedido-itens">
+                    <li>1x Pizza MammaMia Especial — R$ 55,00</li>
+                    <li>1x Pizza Chocolate com Morango — R$ 45,00</li>
+                    <li>2x Refrigerante Lata — R$ 10,00</li>
+                </ul>
+                <p class="pedido-total">Total: R$ 110,00</p>
+            </div>
+
+            <div class="pedido-card">
+                <div class="pedido-header">
+                    <span class="pedido-numero">Pedido #0043</span>
+                    <span class="status preparo">Saiu para Entrega</span>
+                </div>
+                <p class="pedido-data">Data: 30/10/2026 — 20:10</p>
+                <ul class="pedido-itens">
+                    <li>1x Pizza Calabresa — R$ 42,00</li>
+                </ul>
+                <p class="pedido-total">Total: R$ 42,00</p>
+            </div>
+        </section>
+
+        <section class="secao finalizados">
+            <h3> Pedidos Finalizados</h3>
+
+            <div class="pedido-card">
+                <div class="pedido-header">
+                    <span class="pedido-numero">Pedido #0039</span>
+                    <span class="status finalizado">Entregue</span>
+                </div>
+                <p class="pedido-data">Data: 28/10/2026 — 20:30</p>
+                <ul class="pedido-itens">
+                    <li>1x Pizza Quatro Queijos — R$ 48,50</li>
+                    <li>1x Refrigerante 2L — R$ 8,00</li>
+                </ul>
+                <p class="pedido-total">Total: R$ 56,50</p>
+            </div>
+
+            <div class="pedido-card">
+                <div class="pedido-header">
+                    <span class="pedido-numero">Pedido #0035</span>
+                    <span class="status finalizado">Entregue</span>
+                </div>
+                <p class="pedido-data">Data: 25/10/2026 — 19:15</p>
+                <ul class="pedido-itens">
+                    <li>2x Pizza Marguerita — R$ 79,80</li>
+                    <li>1x Pizza Banana com Canela — R$ 38,00</li>
+                </ul>
+                <p class="pedido-total">Total: R$ 117,80</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MammaMia Pizzaria. Todos os direitos reservados.</p>
+    </footer>
+
     <script src="../js/meusPedidos.js"></script>
 </body>
 </html>

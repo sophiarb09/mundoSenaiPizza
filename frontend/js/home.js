@@ -1,24 +1,23 @@
-/*
-window.addEventListener('load', () => {
-    const salvo = localStorage.getItem('usuarioLogado');
-    
-    if (!salvo) {
-        window.location.href = '../index.html';
-        return;
-    }
+document.addEventListener('DOMContentLoaded', function() {
 
-    const usuario = JSON.parse(salvo);
-    if (!usuario.logado) {
-        window.location.href = '../index.html';
-        return;
-    }
+    const links = document.querySelectorAll('nav a');
+    const paginaAtual = window.location.pathname.split('/').pop();
 
-    document.getElementById('nomeUsuario').textContent = usuario.nome;
+    links.forEach(link => {
+        if (link.getAttribute('href') === paginaAtual) {
+            link.style.backgroundColor = '#ffccbc';
+            link.style.color = '#b71c1c';
+        }
+    });
+
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, indice) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = `all 0.5s ease ${indice * 0.1}s`;
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 100);
+    });
 });
-*/
-
-function sair() {
-    localStorage.removeItem('usuarioLogado');
-    localStorage.removeItem('pedidos');
-    window.location.href = '../index.html';
-}

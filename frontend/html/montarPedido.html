@@ -1,24 +1,102 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montar Pedido</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/montarPedido.css">
+    <title>Montar Pedido — MammaMia</title>
 </head>
 <body>
-    <div>
-        <h1>Montar Pedido</h1>
+    <header>
+        <h1>🍕 MammaMia Pizzaria</h1>
+    </header>
 
-        <main class="nav-bar">
-            <button onclick="navEnderecos()"> Endereços </button>
-            <button onclick="navMeusPedidos()"> Meus Pedidos </button>
-            <button onclick="navHome()"> Home </button>
-            <button onclick="navCardapio()"> Cardápio </button>
-            <button class="nav-montarPedido"> Montar Pedido </button>
-        </main>
-    </div>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="enderecos.html">Endereços</a>
+        <a href="meusPedidos.html">Meus Pedidos</a>
+        <a href="cardapio.html">Cardápio</a>
+        <a href="favoritos.html">Favoritos</a>
+        <a href="montarPedido.html">Montar Pedido</a>
+    </nav>
 
-    <script src="../js/script.js"></script>
+    <main>
+        <h2>🛒 Montar Pedido</h2>
+
+        <div class="carrinho">
+        </div>
+
+        <div class="bloco-endereco">
+            <h3>📍 Endereço de Entrega</h3>
+            <form class="form-endereco" id="formEndereco">
+                <div class="grupo-form">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" placeholder="00000-000" required maxlength="10">
+                </div>
+
+                <div class="grupo-form">
+                    <label for="logradouro">Rua / Logradouro:</label>
+                    <input type="text" id="logradouro" name="logradouro" placeholder="Av. das Pizzas" required>
+                </div>
+
+                <div class="linha-dupla">
+                    <div class="grupo-form">
+                        <label for="numero">Número:</label>
+                        <input type="text" id="numero" name="numero" placeholder="123" required>
+                    </div>
+                    <div class="grupo-form">
+                        <label for="complemento">Complemento:</label>
+                        <input type="text" id="complemento" name="complemento" placeholder="Apto 42 / Bloco B">
+                    </div>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" placeholder="Centro" required>
+                </div>
+
+                <div class="linha-dupla">
+                    <div class="grupo-form">
+                        <label for="cidade">Cidade:</label>
+                        <input type="text" id="cidade" name="cidade" placeholder="Palhoça" required>
+                    </div>
+                    <div class="grupo-form">
+                        <label for="estado">UF:</label>
+                        <select id="estado" name="estado" required>
+                            <option value="">Selecione</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="RJ">RJ</option>
+                            <option value="MG">MG</option>
+                            <option value="PR">PR</option>
+                            <option value="RS">RS</option>
+                            <option value="BA">BA</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="DF">DF</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="pontoReferencia">Ponto de Referência:</label>
+                    <input type="text" id="pontoReferencia" name="pontoReferencia" placeholder="Próximo ao supermercado...">
+                </div>
+
+                <div class="botoes-form">
+                    <a href="cardapio.html" class="btn-voltar">Continuar Comprando</a>
+                    <button type="reset" class="btn-limpar">Limpar</button>
+                    <button type="submit" class="btn-finalizar">✅ Finalizar Pedido</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 MammaMia Pizzaria. Todos os direitos reservados.</p>
+    </footer>
+
     <script src="../js/montarPedido.js"></script>
 </body>
 </html>
