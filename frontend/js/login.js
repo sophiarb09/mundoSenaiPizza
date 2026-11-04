@@ -55,3 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function sair(){
+  if (confirm('Tem certeza que deseja sair?')) {
+    alert('Voltando à página de Login');
+    localStorage.removeItem('usuarioLogado');
+    sessionStorage.clear();
+
+    window.location.href = '../html/index.html';
+  }
+};

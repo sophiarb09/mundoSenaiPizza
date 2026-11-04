@@ -138,3 +138,11 @@ body {
         margin: 15px;
     }
 }
+
+footer {
+    background-color: #b71c1c;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30vh;
+}
