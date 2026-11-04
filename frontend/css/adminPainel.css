@@ -1,0 +1,242 @@
+.header-admin {
+    background: linear-gradient(135deg, #b71c1c, #d32f2f);
+    color: white;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.header-admin h1 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.usuario-logado {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.usuario-logado span {
+    font-weight: bold;
+}
+
+.btn-sair {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-sair:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.nav-admin {
+    background: #fff;
+    padding: 15px 30px;
+    border-bottom: 2px solid #ffccbc;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-admin a {
+    color: #666;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
+
+.nav-admin a.ativo,
+.nav-admin a:hover {
+    background: #ffebee;
+    color: #b71c1c;
+}
+
+main {
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+h2 {
+    color: #b71c1c;
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+}
+
+h3 {
+    color: #333;
+    margin: 35px 0 15px;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #ffccbc;
+    padding-bottom: 8px;
+}
+
+.form-sabor {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.grupo-form {
+    margin-bottom: 18px;
+}
+
+.grupo-form label {
+    display: block;
+    font-weight: bold;
+    color: #b71c1c;
+    margin-bottom: 6px;
+    font-size: 0.95rem;
+}
+
+.form-sabor input,
+.form-sabor select,
+.form-sabor textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ffccbc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-sabor input:focus,
+.form-sabor select:focus,
+.form-sabor textarea:focus {
+    outline: none;
+    border-color: #e64a19;
+    box-shadow: 0 0 0 3px rgba(230, 74, 25, 0.15);
+}
+
+.form-sabor textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.botoes-form {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.botoes-form button {
+    flex: 1;
+    min-width: 140px;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-limpar {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.btn-limpar:hover {
+    background-color: #ffe0b2;
+}
+
+.btn-adicionar {
+    background-color: #2e7d32;
+    color: white;
+}
+
+.btn-adicionar:hover {
+    background-color: #1b5e20;
+}
+
+.lista-sabores {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sabor-card {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.sabor-info h4 {
+    color: #b71c1c;
+    margin: 0 0 5px;
+    font-size: 1rem;
+}
+
+.sabor-info .categoria {
+    display: inline-block;
+    background: #ffe0b2;
+    color: #e65100;
+    font-size: 0.75rem;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-left: 8px;
+}
+
+.sabor-info p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 5px 0;
+}
+
+.sabor-preco {
+    font-weight: bold;
+    color: #2e7d32;
+    font-size: 1.1rem;
+}
+
+.btn-excluir {
+    background: #ffebee;
+    color: #c62828;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-excluir:hover {
+    background: #ffccbc;
+}
+
+.vazio {
+    text-align: center;
+    color: #888;
+    padding: 40px;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .header-admin {
+        flex-direction: column;
+        text-align: center;
+    }
+    .sabor-card {
+        flex-direction: column;
+    }
+}

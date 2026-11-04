@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/pizzaioloPedidos.css">
+    <title>Pedidos — Pizzaiolo</title>
+</head>
+<body>
+    <header class="header-pizzaiolo">
+        <h1>👨‍🍳 Painel do Pizzaiolo — MammaMia</h1>
+        <div class="usuario-logado">
+            <span id="nomePizzaiolo">Pizzaiolo</span>
+            <button id="btnSairPizzaiolo" class="btn-sair">Sair</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="aviso-atualizacao">
+            <strong>🔄 Atualização automática</strong> — os pedidos aparecem por ordem de chegada
+        </div>
+
+        <h2>📋 Pedidos Recebidos</h2>
+        <div class="lista-pedidos pizzaiolo" id="pedidosRecebidos"></div>
+
+        <h2>🔥 Em Preparo</h2>
+        <div class="lista-pedidos pizzaiolo" id="pedidosEmPreparo"></div>
+
+        <h2>🚚 Saindo para Entrega</h2>
+        <div class="lista-pedidos pizzaiolo" id="pedidosEmEntrega"></div>
+    </main>
+
+    <script src="../js/pizzaioloPedidos.js"></script>
+</body>
+</html>

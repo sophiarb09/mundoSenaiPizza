@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/adminPainel.css">
+    <title>Painel Admin — MammaMia</title>
+</head>
+<body>
+    <header class="header-admin">
+        <h1>👑 Painel do Administrador — MammaMia</h1>
+        <div class="usuario-logado">
+            <span id="nomeAdmin">Admin</span>
+            <button id="btnSairAdmin" class="btn-sair" onclick="sair()">Sair</button>
+        </div>
+    </header>
+
+    <nav class="nav-admin">
+        <a href="adminPainel.html" class="ativo">Adicionar Sabores</a>
+        <a href="../html/home.html">🏠 Site do Cliente</a>
+    </nav>
+
+    <main>
+        <h2>➕ Adicionar Novo Sabor de Pizza</h2>
+
+        <form class="form-sabor" id="formSabor">
+            <div class="grupo-form">
+                <label for="nomeSabor">Nome da Pizza:</label>
+                <input type="text" id="nomeSabor" name="nomeSabor" placeholder="Ex: Frango com Catupiry" required>
+            </div>
+
+            <div class="grupo-form">
+                <label for="categoriaSabor">Categoria:</label>
+                <select id="categoriaSabor" name="categoriaSabor" required>
+                    <option value="">Selecione</option>
+                    <option value="salgado">Salgado</option>
+                    <option value="doce">Doce</option>
+                </select>
+            </div>
+
+            <div class="grupo-form">
+                <label for="precoSabor">Preço (R$):</label>
+                <input type="number" step="0.01" id="precoSabor" name="precoSabor" placeholder="0,00" required>
+            </div>
+
+            <div class="grupo-form">
+                <label for="ingredientesSabor">Ingredientes / Descrição:</label>
+                <textarea id="ingredientesSabor" name="ingredientesSabor" rows="3" placeholder="Descreva os ingredientes..." required></textarea>
+            </div>
+
+            <div class="botoes-form">
+                <button type="reset" class="btn-limpar">Limpar</button>
+                <button type="submit" class="btn-adicionar">Adicionar ao Cardápio</button>
+            </div>
+        </form>
+
+        <h3>📋 Sabores Cadastrados</h3>
+        <div class="lista-sabores" id="listaSabores"></div>
+    </main>
+
+    <script src="../js/adminPainel.js"></script>
+</body>
+</html>
