@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const perfil = localStorage.getItem('perfilLogado');
     if (perfil !== 'pizzaiolo') {
-        alert('⚠️ Acesso restrito! Faça login como Pizzaiolo.');
-        window.location.href = 'login.html';
+        alert('⚠️ Acesso restrito! Faça index como Pizzaiolo.');
+        window.location.href = '../html/index.html';
         return;
     }
 
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnSair.addEventListener('click', function() {
             localStorage.removeItem('perfilLogado');
             localStorage.removeItem('nomeUsuario');
-            window.location.href = 'login.html';
+            window.location.href = '../html/index.html';
         });
     }
 

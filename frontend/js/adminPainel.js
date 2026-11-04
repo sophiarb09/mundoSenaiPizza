@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const perfil = localStorage.getItem('perfilLogado');
     if (perfil !== 'admin') {
-        alert('⚠️ Acesso restrito! Faça login como Administrador.');
-        window.location.href = 'login.html';
+        alert('⚠️ Acesso restrito! Faça index como Administrador.');
+        window.location.href = '../html/index.html';
         return;
     }
 
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btnSair.addEventListener('click', function() {
             localStorage.removeItem('perfilLogado');
             localStorage.removeItem('nomeUsuario');
-            window.location.href = 'login.html';
+            window.location.href = '../html/index.html';
         });
     }
 

@@ -87,6 +87,11 @@ function sair() {
         sessionStorage.clear();
 
         alert('Voltando à página de Login');
-        window.location.href = '../html/index.html';
+
+        if (window.location.pathname.includes('/adminHtml/')) {
+            window.location.href = '../html/index.html';
+        } else {
+            window.location.href = 'index.html';
+        }
     }
 }
