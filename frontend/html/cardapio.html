@@ -9,6 +9,7 @@
 <body>
     <header>
         <h1>🍕 Cardápio — MammaMia</h1>
+        <button id="btnAddSabor" class="btn-add-sabor" style="display: none;">➕ Adicionar Sabor</button>
     </header>
 
     <nav>
@@ -22,26 +23,26 @@
 
     <main>
         <div class="busca">
-            <input type="search" placeholder="🔍 Pesquise pelo sabor da pizza...">
+            <input type="search" id="buscaSabor" placeholder="🔍 Pesquise pelo sabor da pizza...">
         </div>
 
         <div class="categorias">
-            <div class="categoria ativa">Todos</div>
-            <div class="categoria">Salgado</div>
-            <div class="categoria">Doce</div>
-            <div class="categoria">Vegetariano</div>
-            <div class="categoria">Especiais</div>
+            <div class="categoria ativa" data-filtro="todos">Todos</div>
+            <div class="categoria" data-filtro="salgado">Salgado</div>
+            <div class="categoria" data-filtro="doce">Doce</div>
+            <div class="categoria" data-filtro="vegetariano">Vegetariano</div>
+            <div class="categoria" data-filtro="especiais">Especiais</div>
         </div>
 
-        <div class="grid-pizzas">
+        <div class="grid-pizzas" id="gridPizzas">
             
             <div class="pizza-card" data-categoria="salgado">
                 <h3>Marguerita</h3>
                 <p class="preco">R$ 39,90</p>
                 <p class="descricao">Molho de tomate, mussarela de búfala, tomate fatiado, manjericão fresco e azeite de oliva extra virgem.</p>
                 <div class="botoes">
-                    <button class="btn-comprar">Adicionar ao Pedido</button>
-                    <button class="btn-favorito">❤️</button>
+                    <button class="btn-comprar" data-nome="Marguerita" data-preco="39.90">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">🤍</button>
                 </div>
             </div>
 
@@ -50,8 +51,8 @@
                 <p class="preco">R$ 42,00</p>
                 <p class="descricao">Linguiça calabresa fatiada, cebola roxa, azeitonas pretas, mussarela e orégano.</p>
                 <div class="botoes">
-                    <button class="btn-comprar">Adicionar ao Pedido</button>
-                    <button class="btn-favorito">❤️</button>
+                    <button class="btn-comprar" data-nome="Calabresa" data-preco="42.00">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">🤍</button>
                 </div>
             </div>
 
@@ -60,8 +61,8 @@
                 <p class="preco">R$ 48,50</p>
                 <p class="descricao">Mussarela, provolone, gorgonzola e parmesão ralado com molho branco.</p>
                 <div class="botoes">
-                    <button class="btn-comprar">Adicionar ao Pedido</button>
-                    <button class="btn-favorito">❤️</button>
+                    <button class="btn-comprar" data-nome="Quatro Queijos" data-preco="48.50">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">🤍</button>
                 </div>
             </div>
 
@@ -70,8 +71,8 @@
                 <p class="preco">R$ 45,00</p>
                 <p class="descricao">Chocolate meio amargo derretido, morangos frescos fatiados e granulado belga.</p>
                 <div class="botoes">
-                    <button class="btn-comprar">Adicionar ao Pedido</button>
-                    <button class="btn-favorito">❤️</button>
+                    <button class="btn-comprar" data-nome="Chocolate com Morango" data-preco="45.00">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">🤍</button>
                 </div>
             </div>
 
@@ -80,8 +81,8 @@
                 <p class="preco">R$ 38,00</p>
                 <p class="descricao">Fatias de banana dourada, açúcar, canela em pó e leite condensado.</p>
                 <div class="botoes">
-                    <button class="btn-comprar">Adicionar ao Pedido</button>
-                    <button class="btn-favorito">❤️</button>
+                    <button class="btn-comprar" data-nome="Banana com Canela" data-preco="38.00">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">🤍</button>
                 </div>
             </div>
 
@@ -90,8 +91,8 @@
                 <p class="preco">R$ 46,00</p>
                 <p class="descricao">Molho de tomate, abobrinha, berinjela, pimentão colorido, cenoura ralada, milho e ervilha.</p>
                 <div class="botoes">
-                    <button class="btn-comprar">Adicionar ao Pedido</button>
-                    <button class="btn-favorito">❤️</button>
+                    <button class="btn-comprar" data-nome="Vegetariana Completa" data-preco="46.00">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">🤍</button>
                 </div>
             </div>
 
@@ -100,8 +101,8 @@
                 <p class="preco">R$ 55,00</p>
                 <p class="descricao">Molho de tomate, mussarela, presunto, calabresa, frango desfiado, catupiry, ovos e azeitonas.</p>
                 <div class="botoes">
-                    <button class="btn-comprar">Adicionar ao Pedido</button>
-                    <button class="btn-favorito">❤️</button>
+                    <button class="btn-comprar" data-nome="MammaMia Especial" data-preco="55.00">Adicionar ao Pedido</button>
+                    <button class="btn-favorito">🤍</button>
                 </div>
             </div>
         </div>

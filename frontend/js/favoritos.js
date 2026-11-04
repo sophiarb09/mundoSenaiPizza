@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const container = document.querySelector('.grid-favoritos');
-    let favoritosSalvos = JSON.parse(localStorage.getItem('favoritos') || []);
+    let favoritosSalvos = JSON.parse(localStorage.getItem('favoritos') || '[]');
 
     const precos = {
         'Marguerita': 39.90,
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Chocolate com Morango': 45.00,
         'Banana com Canela': 38.00,
         'Vegetariana Completa': 46.00,
-        'Pizza MammaMia Especial': 55.00
+        'MammaMia Especial': 55.00
     };
 
     const descricoes = {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         'Chocolate com Morango': 'Chocolate meio amargo derretido, morangos frescos fatiados e granulado belga.',
         'Banana com Canela': 'Fatias de banana dourada, açúcar, canela em pó e leite condensado.',
         'Vegetariana Completa': 'Molho de tomate, abobrinha, berinjela, pimentão colorido, cenoura ralada, milho e ervilha.',
-        'Pizza MammaMia Especial': 'Molho de tomate, mussarela, calabresa, champignon, pimentão e azeitonas.'
+        'MammaMia Especial': 'Molho de tomate, mussarela, presunto, calabresa, frango desfiado, catupiry, ovos e azeitonas.'
     };
 
     function carregarFavoritos() {
@@ -36,9 +36,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        favoritosSalvos.forEach(nome => {
-            const preco = precos[nome] || 0;
-            const descricao = descricoes[nome] || 'Sua pizza favorita salva!';
+        favoritosSalvos.forEach(item => {
+            // ✅ Ajusta para pegar o nome seja como string ou objeto
+            const nome = typeof item === 'object' ? item.nome : item;
+            const preco = parseFloat(item.preco) || precos[nome] || 0;
+            const descricao = item.descricao || descricoes[nome] || 'Sua pizza favorita salva!';
 
             const card = document.createElement('div');
             card.className = 'favorito-card';
@@ -56,15 +58,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.addEventListener('click', function(e) {
-        // Botão REMOVER
         if (e.target.classList.contains('btn-remover')) {
             const nome = e.target.dataset.nome;
-            favoritosSalvos = favoritosSalvos.filter(n => n !== nome);
+            favoritosSalvos = favoritosSalvos.filter(item => {
+                const nomeItem = typeof item === 'object' ? item.nome : item;
+                return nomeItem !== nome;
+            });
             localStorage.setItem('favoritos', JSON.stringify(favoritosSalvos));
             carregarFavoritos();
         }
 
-        // Botão ADICIONAR AO PEDIDO
         if (e.target.classList.contains('btn-comprar')) {
             const nome = e.target.dataset.nome;
             const preco = parseFloat(e.target.dataset.preco);
@@ -86,9 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             localStorage.setItem('carrinho', JSON.stringify(carrinho));
 
-            // Feedback visual
             const textoOriginal = e.target.textContent;
-            e.target.textContent = ' Adicionado!';
+            e.target.textContent = ' ✅ Adicionado!';
             e.target.style.backgroundColor = '#2e7d32';
             e.target.style.color = 'white';
             
