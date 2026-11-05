@@ -15,6 +15,11 @@ header {
     color: white;
     padding: 20px;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 h1 {
@@ -41,6 +46,11 @@ nav a {
 
 nav a:hover {
     background-color: #ffccbc;
+    color: #b71c1c;
+}
+
+nav a.ativo {
+    background-color: #fff9f0;
     color: #b71c1c;
 }
 

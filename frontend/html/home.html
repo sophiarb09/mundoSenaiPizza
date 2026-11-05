@@ -8,32 +8,19 @@
 </head>
 <body>
     <header>
-        <h1>🍕 MammaMia Pizzaria</h1>
-        <p>O sabor da tradição direto para a sua mesa!</p>
-
-        <button 
-            onclick="sair()" 
-            style= " 
-                padding: 10px 25px;
-                border: none;
-                border-radius: 30px;
-                background-color: #e63946;
-                color: white;
-                font-size: 16px;
-                font-weight: bold;
-                cursor: pointer;
-                transition: 0.3s;
-                "
-            onmouseover="this.style.backgroundColor='#d62828'"
-            onmouseout="this.style.backgroundColor='#e63946'"
-
-            
-        > Sair
-        </button>
+        <div class="header-esq">
+            <h1>🍕 MammaMia Pizzaria</h1>
+        </div>
+        <div class="header-meio">
+            <p>O sabor da tradição direto para a sua mesa!</p>
+        </div>
+        <div class="header-dir">
+            <button id="btnSair" onclick="sair()">Sair</button>
+        </div>
     </header>
 
     <nav>
-        <a href="home.html">Home</a>
+        <a href="home.html" class="ativo">Home</a>
         <a href="enderecos.html">Endereços</a>
         <a href="meusPedidos.html">Meus Pedidos</a>
         <a href="cardapio.html">Cardápio</a>

@@ -11,15 +11,41 @@ body {
 }
 
 header {
-    display: block;
     background-color: #b71c1c;
     color: white;
-    padding: 20px;
-    text-align: center;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-h1 {
+.header-esq h1 {
     font-size: 2.5rem;
+}
+
+.header-meio p {
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+    line-height: 1.4;
+}
+
+#btnSair {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 30px;
+    background-color: #e63946;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#btnSair:hover {
+    background-color: #d62828;
 }
 
 nav {
@@ -38,6 +64,11 @@ nav a {
     padding: 8px 16px;
     border-radius: 5px;
     transition: background 0.3s;
+}
+
+nav a.ativo {
+    background-color: #fff9f0;
+    color: #b71c1c;
 }
 
 nav a:hover {
@@ -95,6 +126,12 @@ main {
 .card h4 {
     color: #b71c1c;
     margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.card p {
+    line-height: 1.5;
+    color: #444;
 }
 
 footer {
@@ -102,5 +139,5 @@ footer {
     color: white;
     text-align: center;
     padding: 15px;
-    margin-top: 30vh;
+    margin-top: 60px;
 }
