@@ -1,11 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const perfil = usuarioLogado?.tipo || localStorage.getItem('perfilLogado');
+
+    const linkMeusPedidos = document.getElementById('linkMeusPedidos');
+    const linkAdmin = document.getElementById('linkAdmin');
+    const linkPedidosPizzaiolo = document.getElementById('linkPedidosPizzaiolo');
+
+    linkMeusPedidos.style.display = 'none';
+    linkAdmin.style.display = 'none';
+    linkPedidosPizzaiolo.style.display = 'none';
+
+  
+    if (perfil === 'cliente') {
+        linkMeusPedidos.style.display = 'inline-block';
+    }
+    else if (perfil === 'admin') {
+        linkAdmin.style.display = 'inline-block';
+        linkPedidosPizzaiolo.style.display = 'inline-block';
+        linkMeusPedidos.style.display = 'none'; 
+    }
+    else if (perfil === 'pizzaiolo') {
+        linkPedidosPizzaiolo.style.display = 'inline-block';
+        linkMeusPedidos.style.display = 'none';
+    }
+
     const containerPreparo = document.querySelector('.em-preparo');
     const containerFinalizados = document.querySelector('.finalizados');
+    const idCliente = localStorage.getItem('idUsuario');
     
-    let pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
-
-
-    if (pedidos.length === 0) { }
+    let pedidos = [];
+    if (idCliente) {
+        pedidos = JSON.parse(localStorage.getItem(`pedidos_${idCliente}`) || '[]');
+    }
 
     function renderizarPedidos() {
         if (containerPreparo) {
@@ -20,18 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         pedidos.forEach(pedido => {
-
             const status = (pedido.status || 'recebido').trim().toLowerCase();
-            
             const ehPreparo = ['recebido', 'preparo', 'em-preparo', 'saiu-entrega'].includes(status);
             const container = ehPreparo ? containerPreparo : containerFinalizados;
             if (!container) return;
 
             let classeStatus = 'preparo';
-            let textoStatus = 'Recebido';
-            if (status === 'recebido') {
-                textoStatus = 'Aguardando Preparo';
-            } else if (['preparo', 'em-preparo'].includes(status)) {
+            let textoStatus = 'Aguardando Preparo';
+            if (['preparo', 'em-preparo'].includes(status)) {
                 textoStatus = 'Em Preparo';
             } else if (['saiu-entrega', 'entrega', 'em-entrega'].includes(status)) {
                 textoStatus = 'Saiu para Entrega';
@@ -41,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const total = pedido.itens.reduce((soma, item) => soma + (item.preco * item.quantidade), 0);
-
             const card = document.createElement('div');
             card.className = 'pedido-card';
             card.innerHTML = `
@@ -72,5 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    renderizarPedidos();
+    if (perfil === 'cliente') {
+        renderizarPedidos();
+    }
 });

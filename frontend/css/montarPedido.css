@@ -1,15 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
 
 body {
-    font-family: 'Arial', sans-serif;
     background-color: #fff9f0;
-    margin: 0;
     color: #333;
 }
 
 main {
     max-width: 700px;
     margin: 30px auto;
-    padding: 0 20px;
+    padding: 20px;
 }
 
 header {
@@ -56,6 +60,11 @@ nav a {
 
 nav a:hover {
     background-color: #ffccbc;
+    color: #b71c1c;
+}
+
+nav a.ativo {
+    background-color: #fff9f0;
     color: #b71c1c;
 }
 
@@ -252,6 +261,7 @@ nav a:hover {
 }
 
 .btn-voltar {
+
     background-color: #ffebee;
     color: #b71c1c;
 }

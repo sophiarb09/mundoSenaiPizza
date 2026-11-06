@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function () {
-
     const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
     const perfil = usuarioLogado?.tipo || localStorage.getItem('perfilLogado');
 
@@ -29,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             if (!pedido._processado && (status === 'em-preparo' || !status)) {
                 pedido.status = 'recebido';
-                pedido._processado = true; 
+                pedido._processado = true;
             }
             return pedido;
         });
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function renderizar() {
         const pedidos = carregarPedidos();
-        salvarPedidos(pedidos); 
+        salvarPedidos(pedidos);
 
         containerRecebidos.innerHTML = '';
         containerPreparo.innerHTML = '';
@@ -115,19 +114,19 @@ document.addEventListener('DOMContentLoaded', function () {
             if (status === 'recebido') {
                 botoes = `<button class="btn-acao btn-preparo" data-indice="${indice}" data-acao="preparo">
                             🔥 Iniciar Preparo
-                          </button>`;
+                        </button>`;
             } else if (status === 'preparo') {
                 botoes = `<button class="btn-acao btn-saida" data-indice="${indice}" data-acao="entrega">
                             🚚 Sair para Entrega
-                          </button>`;
+                        </button>`;
             } else if (status === 'entrega') {
                 botoes = `<button class="btn-acao btn-entregue" data-indice="${indice}" data-acao="entregue">
                             ✅ Marcar Entregue
-                          </button>`;
+                        </button>`;
             } else {
                 botoes = `<button class="btn-acao btn-desativado" disabled>
                             Concluído
-                          </button>`;
+                        </button>`;
             }
 
             card.innerHTML = `
@@ -177,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
             pedidos[indice].status = 'saiu-entrega';
         } else if (acao === 'entregue') {
             pedidos[indice].status = 'entregue';
-            alert(`✅ Pedido #${pedidos[indice].id} entregue!`);
+            alert(`Pedido #${pedidos[indice].id} entregue!`);
         }
 
         salvarPedidos(pedidos);
@@ -189,12 +188,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     if (btnSair) {
-        btnSair.addEventListener('click', function () {
-            localStorage.removeItem('perfilLogado');
-            localStorage.removeItem('nomeUsuario');
-            localStorage.removeItem('usuarioLogado');
-            localStorage.removeItem('logado');
-            window.location.href = '/index.html';
+        btnSair.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const desejaSair = confirm(
+                'Deseja sair da conta?\n\n' +
+                'OK = Sair\n' +
+                'Cancelar = Permanecer na tela'
+            );
+
+            if (desejaSair) {
+                localStorage.removeItem('usuarioLogado');
+                localStorage.removeItem('perfilLogado');
+                localStorage.removeItem('nomeUsuario');
+                localStorage.removeItem('idUsuario');
+                localStorage.removeItem('logado');
+                window.location.href = '/index.html';
+            }
         });
     }
 

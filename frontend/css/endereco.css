@@ -49,6 +49,11 @@ nav a:hover {
     color: #b71c1c;
 }
 
+nav a.ativo {
+    background-color: #fff9f0;
+    color: #b71c1c;
+}
+
 main {
     max-width: 1000px;
     margin: 30px auto;

@@ -9,11 +9,30 @@
 <body>
     <header>
         <h1>🍕 Endereços — MammaMia</h1>
+        <button 
+            onclick="sair()" 
+            style= " 
+                padding: 10px 25px;
+                border: none;
+                border-radius: 30px;
+                background-color: #e63946;
+                color: white;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.3s;
+                "
+            onmouseover="this.style.backgroundColor='#d62828'"
+            onmouseout="this.style.backgroundColor='#e63946'"
+
+            
+        > Sair
+        </button>
     </header>
 
     <nav>
         <a href="home.html">Home</a>
-        <a href="enderecos.html">Endereços</a>
+        <a href="enderecos.html" class="ativo">Endereços</a>
         <a href="meusPedidos.html">Meus Pedidos</a>
         <a href="cardapio.html">Cardápio</a>
         <a href="favoritos.html">Favoritos</a>
@@ -59,5 +78,6 @@
 
     <script src="../js/enderecos.js"></script>
     <script src="../js/home.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 </html>

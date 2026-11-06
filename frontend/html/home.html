@@ -61,5 +61,31 @@
     
     <script src="../js/home.js"></script>
     <script src="../js/login.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+  
+    const perfil = localStorage.getItem('perfilLogado');
+    const linkMeusPedidos = document.getElementById('linkMeusPedidos');
+    const linkAdmin = document.getElementById('linkAdmin');
+    const linkPedidosPizzaiolo = document.getElementById('linkPedidosPizzaiolo');
+
+    if (linkMeusPedidos) linkMeusPedidos.style.display = 'none';
+    if (linkAdmin) linkAdmin.style.display = 'none';
+    if (linkPedidosPizzaiolo) linkPedidosPizzaiolo.style.display = 'none';
+
+    if (perfil === 'cliente') {
+       
+        if (linkMeusPedidos) linkMeusPedidos.style.display = 'inline';
+    } else if (perfil === 'admin') {
+       
+        if (linkAdmin) linkAdmin.style.display = 'inline';
+        if (linkPedidosPizzaiolo) linkPedidosPizzaiolo.style.display = 'inline';
+    } else if (perfil === 'pizzaiolo') {
+       
+        if (linkPedidosPizzaiolo) linkPedidosPizzaiolo.style.display = 'inline';
+    }
+
+});
+    </script>
 </body>
 </html>
