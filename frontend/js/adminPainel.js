@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
             sabores.push(novoSabor);
             salvarERenderizar();
             formSabor.reset();
-            alert(`✅ Sabor "${novoSabor.nome}" adicionado com sucesso!`);
+            alert(` Sabor "${novoSabor.nome}" adicionado com sucesso!`);
         });
     }
 

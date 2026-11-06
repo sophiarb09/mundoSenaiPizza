@@ -1,23 +1,38 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
-    const perfil = localStorage.getItem('perfilLogado');
-    if (perfil !== 'pizzaiolo') {
-        alert('⚠️ Acesso restrito! Faça index como Pizzaiolo.');
-        window.location.href = '../html/index.html';
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const perfil = usuarioLogado?.tipo || localStorage.getItem('perfilLogado');
+
+    if (perfil !== 'admin' && perfil !== 'pizzaiolo') {
+        alert('⚠️ Acesso restrito!');
+        window.location.href = '/home.html';
         return;
     }
 
-    const nomeUsuario = localStorage.getItem('nomeUsuario') || 'Pizzaiolo';
+    const nomeUsuario = localStorage.getItem('nomeUsuario') ||
+                        (perfil === 'admin' ? 'Administrador' : 'Pizzaiolo');
     const elNome = document.getElementById('nomePizzaiolo');
     if (elNome) elNome.textContent = nomeUsuario;
 
     const btnSair = document.getElementById('btnSairPizzaiolo');
+    const botoesAba = document.querySelectorAll('.aba-btn');
+    const conteudosAba = document.querySelectorAll('.aba-conteudo');
     const containerRecebidos = document.getElementById('pedidosRecebidos');
     const containerPreparo = document.getElementById('pedidosEmPreparo');
     const containerEntrega = document.getElementById('pedidosEmEntrega');
 
     function carregarPedidos() {
-        return JSON.parse(localStorage.getItem('pedidos') || '[]');
+        const pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
+        
+        return pedidos.map(pedido => {
+            const status = (pedido.status || '').trim().toLowerCase();
+            
+            if (!pedido._processado && (status === 'em-preparo' || !status)) {
+                pedido.status = 'recebido';
+                pedido._processado = true; 
+            }
+            return pedido;
+        });
     }
 
     function salvarPedidos(pedidos) {
@@ -25,40 +40,94 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function formatarData(dataStr) {
-        if (!dataStr) return '';
-        return dataStr;
+        return dataStr || '';
     }
 
     function calcularTotal(itens) {
-        return itens.reduce((soma, item) => soma + (item.preco * item.quantidade), 0);
+        if (!itens || !Array.isArray(itens)) return 0;
+        return itens.reduce((soma, item) => {
+            const preco = item.preco || 0;
+            const qtd = item.quantidade || 0;
+            return soma + (preco * qtd);
+        }, 0);
+    }
+
+    function normalizarStatus(pedido) {
+        const status = (pedido.status || '').trim().toLowerCase();
+
+        if (!status || ['recebido', 'recebida', 'novo'].includes(status)) {
+            return 'recebido';
+        }
+        if (['preparo', 'em-preparo', 'preparando'].includes(status)) {
+            return 'preparo';
+        }
+        if (['entrega', 'saiu-entrega', 'saindo', 'em-entrega', 'a caminho'].includes(status)) {
+            return 'entrega';
+        }
+        if (['entregue', 'concluido', 'finalizado'].includes(status)) {
+            return 'entregue';
+        }
+        return 'recebido';
+    }
+
+    function trocarAba(nomeAba) {
+        botoesAba.forEach(btn => {
+            btn.classList.toggle('ativa', btn.dataset.alvo === nomeAba);
+        });
+        conteudosAba.forEach(aba => {
+            aba.classList.toggle('ativa', aba.id === `aba-${nomeAba}`);
+        });
     }
 
     function renderizar() {
         const pedidos = carregarPedidos();
+        salvarPedidos(pedidos); 
 
         containerRecebidos.innerHTML = '';
         containerPreparo.innerHTML = '';
         containerEntrega.innerHTML = '';
 
-        if (pedidos.length === 0) {
-            containerRecebidos.innerHTML = '<p class="vazio">Nenhum pedido recebido ainda.</p>';
-            return;
+        const temRecebidos = pedidos.some(p => normalizarStatus(p) === 'recebido');
+        const temPreparo = pedidos.some(p => normalizarStatus(p) === 'preparo');
+        const temEntrega = pedidos.some(p => normalizarStatus(p) === 'entrega');
+
+        if (!temRecebidos) {
+            containerRecebidos.innerHTML =
+                '<p class="vazio">📭 Nenhum pedido recebido ainda. Aguardando os pedidos dos clientes!</p>';
+        }
+        if (!temPreparo) {
+            containerPreparo.innerHTML =
+                '<p class="vazio">🔥 Nenhum pedido em preparo no momento.</p>';
+        }
+        if (!temEntrega) {
+            containerEntrega.innerHTML =
+                '<p class="vazio">🚚 Nenhum pedido saindo para entrega agora.</p>';
         }
 
         pedidos.forEach((pedido, indice) => {
+            const status = normalizarStatus(pedido);
             const total = calcularTotal(pedido.itens);
             const card = document.createElement('div');
-            card.className = `pedido-card status-${pedido.status || 'recebido'}`;
+            card.className = `pedido-card status-${status}`;
 
             let botoes = '';
-            if (pedido.status === 'recebido' || !pedido.status) {
-                botoes = `<button class="btn-acao btn-preparo" data-indice="${indice}" data-acao="preparo">🔥 Iniciar Preparo</button>`;
-            } else if (pedido.status === 'preparo') {
-                botoes = `<button class="btn-acao btn-saida" data-indice="${indice}" data-acao="entrega">🚚 Sair para Entrega</button>`;
-            } else if (pedido.status === 'entrega') {
-                botoes = `<button class="btn-acao btn-entregue" data-indice="${indice}" data-acao="entregue">✅ Marcar Entregue</button>`;
+
+            if (status === 'recebido') {
+                botoes = `<button class="btn-acao btn-preparo" data-indice="${indice}" data-acao="preparo">
+                            🔥 Iniciar Preparo
+                          </button>`;
+            } else if (status === 'preparo') {
+                botoes = `<button class="btn-acao btn-saida" data-indice="${indice}" data-acao="entrega">
+                            🚚 Sair para Entrega
+                          </button>`;
+            } else if (status === 'entrega') {
+                botoes = `<button class="btn-acao btn-entregue" data-indice="${indice}" data-acao="entregue">
+                            ✅ Marcar Entregue
+                          </button>`;
             } else {
-                botoes = `<button class="btn-acao btn-desativado" disabled>Concluído</button>`;
+                botoes = `<button class="btn-acao btn-desativado" disabled>
+                            Concluído
+                          </button>`;
             }
 
             card.innerHTML = `
@@ -67,8 +136,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <span class="pedido-data">${formatarData(pedido.data)}</span>
                 </div>
                 <div class="pedido-itens">
-                    ${pedido.itens.map(item => `
-                        <p class="pedido-item">• ${item.nome} × ${item.quantidade} — R$ ${(item.preco * item.quantidade).toFixed(2).replace('.', ',')}</p>
+                    ${(pedido.itens || []).map(item => `
+                        <p class="pedido-item">
+                            • ${item.nome} × ${item.quantidade} — R$ ${((item.preco || 0) * (item.quantidade || 0)).toFixed(2).replace('.', ',')}
+                        </p>
                     `).join('')}
                 </div>
                 <div class="pedido-endereco">
@@ -81,16 +152,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="botoes-acao">${botoes}</div>
             `;
 
-            if (!pedido.status || pedido.status === 'recebido') {
+            if (status === 'recebido') {
                 containerRecebidos.appendChild(card);
-            } else if (pedido.status === 'preparo') {
+            } else if (status === 'preparo') {
                 containerPreparo.appendChild(card);
-            } else if (pedido.status === 'entrega') {
+            } else if (status === 'entrega') {
                 containerEntrega.appendChild(card);
             }
         });
 
-        document.querySelectorAll('.btn-acao:not([disabled])').forEach(btn => {
+        document.querySelectorAll('.btn-acao:not(:disabled)').forEach(btn => {
             btn.addEventListener('click', alterarStatus);
         });
     }
@@ -98,12 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function alterarStatus(e) {
         const indice = parseInt(e.target.dataset.indice);
         const acao = e.target.dataset.acao;
-        let pedidos = carregarPedidos();
+        const pedidos = carregarPedidos();
 
         if (acao === 'preparo') {
             pedidos[indice].status = 'preparo';
         } else if (acao === 'entrega') {
-            pedidos[indice].status = 'entrega';
+            pedidos[indice].status = 'saiu-entrega';
         } else if (acao === 'entregue') {
             pedidos[indice].status = 'entregue';
             alert(`✅ Pedido #${pedidos[indice].id} entregue!`);
@@ -113,11 +184,17 @@ document.addEventListener('DOMContentLoaded', function() {
         renderizar();
     }
 
+    botoesAba.forEach(btn => {
+        btn.addEventListener('click', () => trocarAba(btn.dataset.alvo));
+    });
+
     if (btnSair) {
-        btnSair.addEventListener('click', function() {
+        btnSair.addEventListener('click', function () {
             localStorage.removeItem('perfilLogado');
             localStorage.removeItem('nomeUsuario');
-            window.location.href = '../html/index.html';
+            localStorage.removeItem('usuarioLogado');
+            localStorage.removeItem('logado');
+            window.location.href = '/index.html';
         });
     }
 

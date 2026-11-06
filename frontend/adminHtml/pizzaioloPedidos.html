@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/pizzaioloPedidos.css">
+    <link rel="stylesheet" href="/css/pizzaioloPedidos.css">
     <title>Pedidos — Pizzaiolo</title>
 </head>
 <body>
@@ -16,21 +15,26 @@
         </div>
     </header>
 
-    <main>
-        <div class="aviso-atualizacao">
-            <strong>🔄 Atualização automática</strong> — os pedidos aparecem por ordem de chegada
-        </div>
+    <nav class="nav-abas">
+        <button class="aba-btn ativa" data-alvo="recebidos">📋 Pedidos Recebidos</button>
+        <button class="aba-btn" data-alvo="preparo">🔥 Em Preparo</button>
+        <button class="aba-btn" data-alvo="entrega">🚚 Saindo para Entrega</button>
+    </nav>
 
-        <h2>📋 Pedidos Recebidos</h2>
-        <div class="lista-pedidos pizzaiolo" id="pedidosRecebidos"></div>
+    <main class="conteudo-abas">
+        <section class="aba-conteudo ativa" id="aba-recebidos">
+            <div class="lista-pedidos" id="pedidosRecebidos"></div>
+        </section>
 
-        <h2>🔥 Em Preparo</h2>
-        <div class="lista-pedidos pizzaiolo" id="pedidosEmPreparo"></div>
+        <section class="aba-conteudo" id="aba-preparo">
+            <div class="lista-pedidos" id="pedidosEmPreparo"></div>
+        </section>
 
-        <h2>🚚 Saindo para Entrega</h2>
-        <div class="lista-pedidos pizzaiolo" id="pedidosEmEntrega"></div>
+        <section class="aba-conteudo" id="aba-entrega">
+            <div class="lista-pedidos" id="pedidosEmEntrega"></div>
+        </section>
     </main>
 
-    <script src="../js/pizzaioloPedidos.js"></script>
+    <script src="/js/pizzaioloPedidos.js"></script>
 </body>
 </html>

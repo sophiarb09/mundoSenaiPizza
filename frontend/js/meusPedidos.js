@@ -4,69 +4,38 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let pedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
 
-    if (pedidos.length === 0) {
-        pedidos = [
-            {
-                id: '042',
-                data: '30/10/2026 — 19:45',
-                itens: [
-                    { nome: 'Pizza MammaMia Especial', preco: 55.00, quantidade: 1 },
-                    { nome: 'Pizza Chocolate com Morango', preco: 45.00, quantidade: 1 },
-                    { nome: 'Refrigerante Lata', preco: 5.00, quantidade: 2 }
-                ],
-                status: 'em-preparo'
-            },
-            {
-                id: '043',
-                data: '30/10/2026 — 20:10',
-                itens: [
-                    { nome: 'Pizza Calabresa', preco: 42.00, quantidade: 1 }
-                ],
-                status: 'saiu-entrega'
-            },
-            {
-                id: '039',
-                data: '28/10/2026 — 20:30',
-                itens: [
-                    { nome: 'Pizza Quatro Queijos', preco: 48.50, quantidade: 1 },
-                    { nome: 'Refrigerante 2L', preco: 8.00, quantidade: 1 }
-                ],
-                status: 'entregue'
-            },
-            {
-                id: '035',
-                data: '25/10/2026 — 19:15',
-                itens: [
-                    { nome: 'Pizza Marguerita', preco: 39.90, quantidade: 2 },
-                    { nome: 'Pizza Banana com Canela', preco: 38.00, quantidade: 1 }
-                ],
-                status: 'entregue'
-            }
-        ];
-    }
+
+    if (pedidos.length === 0) { }
 
     function renderizarPedidos() {
         if (containerPreparo) {
             const titulo = containerPreparo.querySelector('h3');
             containerPreparo.innerHTML = '';
-            containerPreparo.appendChild(titulo);
+            if (titulo) containerPreparo.appendChild(titulo);
         }
         if (containerFinalizados) {
             const titulo = containerFinalizados.querySelector('h3');
             containerFinalizados.innerHTML = '';
-            containerFinalizados.appendChild(titulo);
+            if (titulo) containerFinalizados.appendChild(titulo);
         }
 
         pedidos.forEach(pedido => {
-            const ehPreparo = pedido.status === 'em-preparo' || pedido.status === 'saiu-entrega';
+
+            const status = (pedido.status || 'recebido').trim().toLowerCase();
+            
+            const ehPreparo = ['recebido', 'preparo', 'em-preparo', 'saiu-entrega'].includes(status);
             const container = ehPreparo ? containerPreparo : containerFinalizados;
             if (!container) return;
 
             let classeStatus = 'preparo';
-            let textoStatus = 'Em Preparo';
-            if (pedido.status === 'saiu-entrega') {
+            let textoStatus = 'Recebido';
+            if (status === 'recebido') {
+                textoStatus = 'Aguardando Preparo';
+            } else if (['preparo', 'em-preparo'].includes(status)) {
+                textoStatus = 'Em Preparo';
+            } else if (['saiu-entrega', 'entrega', 'em-entrega'].includes(status)) {
                 textoStatus = 'Saiu para Entrega';
-            } else if (pedido.status === 'entregue') {
+            } else if (['entregue', 'concluido', 'finalizado'].includes(status)) {
                 classeStatus = 'finalizado';
                 textoStatus = 'Entregue';
             }

@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('campoSenha').focus();
             return;
         }
-
+        
         localStorage.setItem('perfilLogado', tipoPerfil);
         localStorage.setItem('nomeUsuario', usuario);
         localStorage.setItem('emailUsuario', email);
@@ -53,17 +53,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }));
         localStorage.setItem('logado', 'true');
         localStorage.setItem('usuarioAtual', usuario);
+        
+        localStorage.setItem('usuarioLogado', JSON.stringify({
+            nome: usuario,
+            email: email,
+            tipo: tipoPerfil
+        }));
 
         alert(`Bem-vindo, ${usuario}!`);
 
         if (tipoPerfil === 'cliente') {
-            window.location.href = 'home.html';
+        window.location.href = '/html/home.html'; 
         }
         else if (tipoPerfil === 'admin') {
-            window.location.href = '../adminHtml/adminPainel.html';
+        window.location.href = '/adminHtml/adminPainel.html'; 
         }
         else if (tipoPerfil === 'pizzaiolo') {
-            window.location.href = '../adminHtml/pizzaioloPedidos.html';
+        window.location.href = '/adminHtml/pizzaioloPedidos.html';
         }
     });
 
@@ -83,13 +89,15 @@ function sair() {
         localStorage.removeItem('emailUsuario');
         localStorage.removeItem('logado');
         localStorage.removeItem('usuarioAtual');
+        localStorage.removeItem('usuarioLogado');
+        localStorage.removeItem('dadosUsuario');
 
         sessionStorage.clear();
 
         alert('Voltando à página de Login');
 
         if (window.location.pathname.includes('/adminHtml/')) {
-            window.location.href = '../html/index.html';
+            window.location.href = '/html/index.html';
         } else {
             window.location.href = 'index.html';
         }

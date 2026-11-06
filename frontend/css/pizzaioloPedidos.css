@@ -1,216 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+    color: #333;
+    min-height: 100vh;
+}
+
 .header-pizzaiolo {
-    background: linear-gradient(135deg, #e65100, #ff6f00);
+    background: linear-gradient(135deg, #ff6a00, #ee5a00);
     color: white;
-    padding: 20px 30px;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .header-pizzaiolo h1 {
-    margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
 }
 
 .usuario-logado {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 1rem;
 }
 
 .usuario-logado span {
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .btn-sair {
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.25);
     color: white;
     border: none;
-    padding: 8px 20px;
-    border-radius: 20px;
-    font-weight: bold;
+    padding: 0.5rem 1.2rem;
+    border-radius: 25px;
     cursor: pointer;
-    transition: background 0.3s;
+    font-weight: 600;
+    transition: background 0.2s;
 }
 
 .btn-sair:hover {
     background: rgba(255,255,255,0.4);
 }
 
-main {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-.aviso-atualizacao {
-    background: #e8f5e9;
-    border-left: 4px solid #2e7d32;
-    padding: 12px 18px;
-    border-radius: 6px;
-    color: #2e7d32;
-    margin-bottom: 25px;
-    font-size: 0.95rem;
-}
-
-h2 {
-    color: #e65100;
-    margin: 35px 0 15px;
-    font-size: 1.3rem;
+.nav-abas {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-h2:nth-of-type(1) { color: #283593; }
-h2:nth-of-type(2) { color: #e65100; }
-h2:nth-of-type(3) { color: #2e7d32; }
+.aba-btn {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background: #eee;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.aba-btn:hover {
+    background: #ddd;
+}
+
+.aba-btn.ativa {
+    background: #ff6a00;
+    color: white;
+}
+
+.conteudo-abas {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+.aba-conteudo {
+    display: none;
+}
+
+.aba-conteudo.ativa {
+    display: block;
+    animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 .lista-pedidos {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-bottom: 10px;
+    gap: 1rem;
+}
+
+.vazio {
+    color: #999;
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 10px;
 }
 
 .pedido-card {
     background: white;
-    padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
-    border-left: 5px solid;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding: 1.2rem;
+    border-left: 4px solid;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.2s;
 }
 
 .pedido-card:hover {
-    transform: translateX(4px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
 }
 
-.pedido-card.status-recebido { border-color: #283593; }
-.pedido-card.status-preparo   { border-color: #e65100; }
-.pedido-card.status-entrega  { border-color: #2e7d32; }
+.status-recebido {
+    border-color: #ffc107;
+}
+
+.status-preparo {
+    border-color: #ff9800;
+}
+
+.status-entrega {
+    border-color: #2196f3;
+}
+
+.status-entregue {
+    border-color: #4caf50;
+    opacity: 0.6;
+}
 
 .pedido-cabecalho {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-    flex-wrap: wrap;
-    gap: 8px;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
 }
 
 .pedido-id {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #333;
+    color: #e65100;
 }
 
 .pedido-data {
-    font-size: 0.85rem;
-    color: #888;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: normal;
 }
 
 .pedido-itens {
-    margin-bottom: 12px;
+    margin-bottom: 0.8rem;
 }
 
 .pedido-item {
-    padding: 4px 0;
-    color: #444;
+    margin: 0.3rem 0;
     font-size: 0.95rem;
 }
 
 .pedido-endereco {
-    background: #fafafa;
-    padding: 10px 14px;
+    background: #f9f9f9;
+    padding: 0.7rem;
     border-radius: 6px;
+    margin-bottom: 0.8rem;
     font-size: 0.9rem;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.pedido-endereco strong {
-    color: #333;
+    line-height: 1.4;
 }
 
 .pedido-total {
+    font-size: 1.1rem;
     font-weight: bold;
     color: #2e7d32;
-    font-size: 1.1rem;
-    margin-bottom: 15px;
+    margin-bottom: 0.8rem;
 }
 
 .botoes-acao {
     display: flex;
-    gap: 10px;
+    gap: 0.6rem;
     flex-wrap: wrap;
 }
 
 .btn-acao {
-    padding: 10px 18px;
     border: none;
-    border-radius: 8px;
-    font-weight: bold;
+    padding: 0.6rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    font-size: 0.9rem;
+    transition: transform 0.2s;
+}
+
+.btn-acao:hover:not(:disabled) {
+    transform: scale(1.05);
 }
 
 .btn-preparo {
-    background: #fff3e0;
-    color: #e65100;
-}
-
-.btn-preparo:hover {
-    background: #ffe0b2;
+    background: #ff9800;
+    color: white;
 }
 
 .btn-saida {
-    background: #e8f5e9;
-    color: #2e7d32;
-}
-
-.btn-saida:hover {
-    background: #c8e6c9;
+    background: #2196f3;
+    color: white;
 }
 
 .btn-entregue {
-    background: #e8f5e9;
-    color: #1b5e20;
-}
-
-.btn-entregue:hover {
-    background: #a5d6a7;
+    background: #4caf50;
+    color: white;
 }
 
 .btn-desativado {
-    opacity: 0.4;
+    background: #ccc;
+    color: #666;
     cursor: not-allowed;
-}
-
-.vazio {
-    text-align: center;
-    color: #999;
-    padding: 30px;
-    font-style: italic;
-}
-
-@media (max-width: 600px) {
-    .header-pizzaiolo {
-        flex-direction: column;
-        text-align: center;
-    }
-    .pedido-cabecalho {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .botoes-acao {
-        flex-direction: column;
-    }
-    .btn-acao {
-        width: 100%;
-    }
 }

@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+    const perfil = usuarioLogado?.tipo || localStorage.getItem('perfilLogado');
 
-    const links = document.querySelectorAll('nav a');
-    const paginaAtual = window.location.pathname.split('/').pop();
+    const linkAdmin = document.getElementById('linkAdmin');
+    const linkPedidosPizzaiolo = document.getElementById('linkPedidosPizzaiolo');
+    const linkMeusPedidos = document.getElementById('linkMeusPedidos');
 
-    links.forEach(link => {
-        if (link.getAttribute('href') === paginaAtual) {
-            link.style.backgroundColor = '#ffccbc';
-            link.style.color = '#b71c1c';
-        }
-    });
+    linkAdmin.style.display = 'none';
+    linkPedidosPizzaiolo.style.display = 'none';
+    linkMeusPedidos.style.display = 'inline-block';
 
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, indice) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = `all 0.5s ease ${indice * 0.1}s`;
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, 100);
-    });
+    if (perfil === 'admin') {
+    linkAdmin.style.display = 'inline-block';
+    linkPedidosPizzaiolo.style.display = 'inline-block';
+    linkMeusPedidos.style.display = 'none';
+    }
+    
+    else if (perfil === 'pizzaiolo') {
+        linkPedidosPizzaiolo.style.display = 'inline-block';
+        linkMeusPedidos.style.display = 'none';
+    }
 });
